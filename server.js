@@ -18,6 +18,7 @@ const sess = {
   secret: 'cool cat club',
   resave: false,
   saveUninitialized: true
+  // TODO: set up session storage
 };
 app.use(session(sess));
 
