@@ -34,12 +34,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("./public"));
 
 // Set up routes
-app.use(routes);
+//app.use(routes);
 
 // Sync database and start listening
 sequelize.sync({force: true}).then(() => {
   console.log("(re)created all models successfully");
   // TODO: run seeds
 
-  app.listen(PORT, () => {console.log("Listening on port: " + PORT);})
+  app.listen(PORT, () => {console.log("Listening on port: http://localhost:" + PORT);})
 })
