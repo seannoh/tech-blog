@@ -2,6 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 const {create} = require("express-handlebars");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // Import modules
 const sequelize = require("./config/connection");
@@ -17,8 +18,14 @@ const PORT = process.env.PORT || 3000;
 const sess = {
   secret: 'cool cat club',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
   // TODO: set up session storage
+  cookie: {
+    maxAge: 86400
+  },
+  store: new SequelizeStore({
+    db: sequelize
+  }),
 };
 app.use(session(sess));
 
