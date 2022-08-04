@@ -23,7 +23,7 @@ User.init(
       validate: {
         isAlphanumeric: true,
         len: [4,20],
-        is: /^([A-z])/g
+        //is: /^([A-z])/g
       }
     },
     password: {
@@ -37,15 +37,13 @@ User.init(
   },
   {
     hooks: {
-      beforeCreate: async function(user, options) {
-        if(user.password) {
-          user.password = await bcrypt.hash(user.password, 10);
-        }
+      beforeCreate: async function(user) {
+        user.password = await bcrypt.hash(user.password, 10);
+        return user;
       },
-      beforeUpdate: async function(user, options) {
-        if(user.password) {
-          user.password = await bcrypt.hash(user.password, 10);
-        }
+      beforeUpdate: async function(user) {
+        user.password = await bcrypt.hash(user.password, 10);
+        return user;
       }
     },
     sequelize,

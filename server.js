@@ -8,7 +8,6 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sequelize = require("./config/connection");
 const routes = require("./controllers/index");
 const helpers = require("./utils/helpers");
-// TODO: import seeds
 
 // Set up express
 const app = express();
@@ -41,12 +40,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static("./public"));
 
 // Set up routes
-//app.use(routes);
+app.use(routes);
 
 // Sync database and start listening
-sequelize.sync({force: true}).then(() => {
+sequelize.sync({force: false}).then(() => {
   console.log("(re)created all models successfully");
-  // TODO: run seeds
 
   app.listen(PORT, () => {console.log("Listening on port: http://localhost:" + PORT);})
 })
