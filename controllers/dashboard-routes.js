@@ -29,7 +29,7 @@ router.get("/", withAuth, async (req, res) => {
     const comments = commentData.map(comment => comment.get({ plain: true }));
 
     res.render("./dash/overview", {
-      posts, comments, loggedIn: req.session.loggedIn
+      posts, comments, loggedIn: req.session.loggedIn, layout: 'dashboard'
     });
 
   } catch (error) {
@@ -38,7 +38,7 @@ router.get("/", withAuth, async (req, res) => {
 })
 
 // "/posts" get route
-router.get("/posts", async (req, res) => {
+router.get("/posts", withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
@@ -50,7 +50,7 @@ router.get("/posts", async (req, res) => {
 
     const posts = postData.map(post => post.get({ plain: true }));
     res.render("./dash/show-posts", {
-      posts, loggedIn: req.session.loggedIn
+      posts, loggedIn: req.session.loggedIn, layout: 'dashboard'
     });
 
   } catch (error) {
@@ -59,7 +59,7 @@ router.get("/posts", async (req, res) => {
 })
 
 // "/comments" get route
-router.get("/comments", async (req, res) => {
+router.get("/comments", withAuth, async (req, res) => {
   try {
     const commentData = await Comment.findAll({
       where: {
@@ -72,7 +72,7 @@ router.get("/comments", async (req, res) => {
     const comments = commentData.map(comment => comment.get({ plain: true }));
 
     res.render("./dash/show-comments", {
-      comments, loggedIn: req.session.loggedIn
+      comments, loggedIn: req.session.loggedIn, layout: 'dashboard'
     });
 
   } catch (error) {
