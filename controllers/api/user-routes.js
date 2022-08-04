@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
 });
 
 // "/:id" put route: update username/password
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const userData = await User.update(req.body, {
       where: {
@@ -70,7 +70,7 @@ router.put("/:id", (req, res) => {
 });
 
 // "/:id" delete route: delete a user
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -89,7 +89,7 @@ router.delete("/:id", (req, res) => {
 });
 
 // "/login" post route
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
