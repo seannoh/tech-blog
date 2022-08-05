@@ -42,9 +42,11 @@ app.use(express.static("./public"));
 // Set up routes
 app.use(routes);
 
+
 // Sync database and start listening
-sequelize.sync({force: false}).then(() => {
+sequelize.sync({force: true}).then(async () => {
   console.log("(re)created all models successfully");
+  await require("./seeds/index")();
 
   app.listen(PORT, () => {console.log("Listening on port: http://localhost:" + PORT);})
 })

@@ -5,11 +5,11 @@ const commentSeeds = require("./comment-seeds");
 const sequelize = require("../config/connection");
 
 async function seedAll() {
-  await sequelize.sync({force: true});
+  //await sequelize.sync({force: true});
   await userSeeds();
   await postSeeds();
   await commentSeeds();
-  process.exit(0);
+  return;
 }
 
-seedAll();
+module.exports = seedAll;
