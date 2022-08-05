@@ -1,4 +1,4 @@
-# Employee Tracker
+# Tech Blog
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green)](#license)
 
@@ -7,6 +7,8 @@ A full-stack website for basic blog posting and commenting.
 ## Description 
 
 This project is a full-stack website for a CMS style blog where users can add, edit and delete posts as well as comment on posts. It uses Express to create a functional API that performs CRUD operations on a database. The database and its models and associations are created with MySQL and Sequelize. The front-end is built using Handlebars.js template engine with Bootstrap as the front-end library.
+
+Link to deployed [site](https://protected-harbor-12759.herokuapp.com/)
 
 ## Table of Contents
 
@@ -41,21 +43,19 @@ Run `npm start` to start the server.
 
 Homepage:
 
-![homepage-preview](./assets/homepage-preview.png-preview.gif)
+![homepage-preview](./assets/homepage-preview.png)
 
 Login:
 
-![login-preview](./assets/login-preview.png-preview.gif)
+![login-preview](./assets/login-preview.png)
 
 Add Post:
 
-![add-post-preview](./assets/add-post-preview.gif)
+![add-post-preview](./assets/add-post-preview.png)
 
 Edit Post:
 
-![edit-post-preview](./assets/edit-post-preview.gif)
-
-Link to deployed [site](https://protected-harbor-12759.herokuapp.com/)
+![edit-post-preview](./assets/edit-post-preview.png)
 
 ## Credits
 This application was built with the support of the resources and staff of the UCB Full Stack Full Time Coding Bootcamp Summer 2022. 
