@@ -93,12 +93,12 @@ router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.email
+        username: req.body.username
       }
     });
 
     if(!userData) {
-      res.status(404).json({message: "No user found with this email address"});
+      res.status(404).json({message: "No user found with this username"});
     } else{
       const isValidPassword = userData.checkPassword(req.body.password);
       if(!isValidPassword) {

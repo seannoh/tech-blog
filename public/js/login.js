@@ -1,8 +1,12 @@
-const loginHandler = async (e) => {
-  e.preventDefault();
+const loginHandler = async (event) => {
+  event.preventDefault();
 
   const username = document.querySelector('#login-username').value.trim();
   const password = document.querySelector('#login-password').value.trim();
+  if(!(username && password)) {
+    alert("Please enter username and password");
+    return;
+  }
 
   if(username && password) {
     const res = await fetch("/api/users/login", {
@@ -13,15 +17,15 @@ const loginHandler = async (e) => {
     console.log(res);
 
     if(res.ok) {
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
-      alert("Invalid username or password")
+      alert("Invalid username or password: " + res.statusText)
     }
   }
 }
 
-const signupHandler = async (e) => {
-  e.preventDefault();
+const signupHandler = async (event) => {
+  event.preventDefault();
 
   const username = document.querySelector('#signup-username').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
@@ -30,6 +34,7 @@ const signupHandler = async (e) => {
   if(!(password === confirmPassword)) {
     alert("Passwords don't match");
   }
+  console.log(username, password);
 
   if(username && password) {
     const res = await fetch("/api/users/", {
@@ -47,5 +52,5 @@ const signupHandler = async (e) => {
   }
 }
 
-document.querySelector('#login-form').addEventListener('submit', loginHandler);
-document.querySelector('#signup-form').addEventListener('submit', signupHandler);
+document.querySelector('#login-form').addEventListener('click', loginHandler);
+document.querySelector('#signup-form').addEventListener('click', signupHandler);
