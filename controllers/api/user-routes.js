@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const userData = await User.findAll();
     res.status(200).json(userData);
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
@@ -24,7 +24,7 @@ router.get("/:id", async (req, res) => {
       res.status(200).json(userData);
     }
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
       })
     });
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 

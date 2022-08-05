@@ -35,7 +35,7 @@ router.get("/login", (req, res) => {
 router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [{model: Comment, include: {model: User}, order: [['updated_at', 'DESC']]}, {model: User}]
+      include: [{model: Comment, include: {model: User}, separate: true, order: [['updated_at', 'DESC']]}, {model: User}]
     });
 
     if(!postData) {
@@ -58,7 +58,7 @@ router.get("/posts/:id", async (req, res) => {
 router.get("/users/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [{model: Post, order: [['updated_at', 'DESC']]}, {model: Comment, include: {model: Post}, order: [['updated_at', 'DESC']]}]
+      include: [{model: Post, separate: true, order: [['updated_at', 'DESC']]}, {model: Comment, include: {model: Post}, separate: true, order: [['updated_at', 'DESC']]}]
     });
     if(!userData) {
       res.status(404).json({message: "No user found with this id"});
