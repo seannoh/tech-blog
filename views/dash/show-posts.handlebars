@@ -3,7 +3,7 @@
 <div class="p-3 border text-center m-2">
     <a href="/dashboard/posts" class="text-dark"><h4>Posts</h4></a>
     {{#each posts as |post|}}
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-post-modal" data-bs-post_id="{{post.id}}">Edit below post &#8595</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-post-modal" data-bs-post_id="{{post.id}}">Edit post below &#8595</button>
 
     {{> post-info post loggedIn=../loggedIn}}
     {{/each}}
@@ -28,9 +28,9 @@
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" >
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit Post</button>
+        <button type="button" class="btn btn-primary" id="add-post-submit">Submit Post</button>
       </div>
     </div>
   </div>
@@ -57,7 +57,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit Post</button>
+        <button type="button" class="btn btn-danger" id="delete-post-btn">Delete Post</button>
+        <button type="button" class="btn btn-primary" id="edit-post-submit">Submit Post</button>
       </div>
     </div>
   </div>
