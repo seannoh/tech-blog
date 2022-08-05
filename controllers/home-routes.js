@@ -12,6 +12,12 @@ router.get("/", async (req, res) => {
 
     const posts = postData.map(post => post.get({ plain: true }));
 
+    req.session.save((err) => {
+      req.session.loggedIn = true;
+
+    });
+    console.log(req.session.loggedIn);
+
     res.render("./home/homepage", {
       posts, 
       loggedIn: req.session.loggedIn
