@@ -18,9 +18,9 @@ const sess = {
   secret: 'cool cat club',
   resave: false,
   saveUninitialized: true,
-  // TODO: set up session storage
+  rolling: true,
   cookie: {
-    maxAge: 86400
+    maxAge: 900000
   },
   store: new SequelizeStore({
     db: sequelize

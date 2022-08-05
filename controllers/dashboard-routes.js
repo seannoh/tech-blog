@@ -44,7 +44,7 @@ router.get("/posts", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      include: [{model: Comment, order: [['updated_at', 'DESC']]}], 
+      include: [{model: Comment, include: {model: User}, separate: true, order: [['updated_at', 'DESC']]}, {model: User}], 
       order: [['updated_at', 'DESC']]
     }); 
 

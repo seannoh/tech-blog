@@ -1,0 +1,66 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-post-modal" >Add new post</button>
+
+<div class="p-3 border text-center m-2">
+    <a href="/dashboard/posts" class="text-dark"><h4>Posts</h4></a>
+    {{#each posts as |post|}}
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-post-modal" data-bs-post_id="{{post.id}}">Edit below post &#8595</button>
+
+    {{> post-info post loggedIn=../loggedIn}}
+    {{/each}}
+</div>
+
+<div class="modal fade" id="add-post-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-post-modal-title">Add a new post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="post-title" class="col-form-label">Post Title:</label>
+            <input type="text" class="form-control" id="post-title">
+          </div>
+          <div class="mb-3">
+            <label for="post-content" class="col-form-label">Post Content:</label>
+            <textarea class="form-control" id="post-content"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="edit-post-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit-post-modal-title">Edit post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="post-title" class="col-form-label">Post Title:</label>
+            <input type="text" class="form-control" id="post-title">
+          </div>
+          <div class="mb-3">
+            <label for="post-content" class="col-form-label">Post Content:</label>
+            <textarea class="form-control" id="post-content"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/posts.js"></script>

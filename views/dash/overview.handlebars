@@ -1,0 +1,15 @@
+<div class="col-8 container">
+  <div class="p-3 border text-center m-2">
+    <a href="/dashboard/posts" class="text-dark"><h4>Posts</h4></a>
+    {{#each posts}}
+    {{> post-info}}
+    {{/each}}
+  </div>
+  <div class="p-3 border text-center m-2">
+    <a href="/dashboard/comments" class="text-dark"><h4>Comments</h4></a>
+    {{#each comments as |comment|}}
+    {{> comments comment}}
+    {{/each}}
+  </div>
+
+</div>
